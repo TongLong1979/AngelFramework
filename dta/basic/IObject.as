@@ -1,0 +1,4 @@
+interface IObject
+{    
+    void logic();
+}

@@ -1,6 +1,6 @@
 namespace config
 {
-    const bool DEBUG = true;
+    const bool DEBUG = false;
     
     namespace layers
     {
@@ -8,4 +8,8 @@ namespace config
     }
 }
 
+// Global error var
+array <string> g_errors;
+
+// Global array of objects 
 array <array<ObjectBase@>> g_objects(config::layers::MAX_LAYERS);

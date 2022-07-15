@@ -1,5 +1,5 @@
 final class ObjectManager
-{  
+{      
     void prepare()
     {
         for(uint i = 0; i < g_objects.length(); ++i)
@@ -34,8 +34,7 @@ final class ObjectManager
             return;
         }
 
-        print("Object["+object.name+"] Max layers is: " + config::layers::MAX_LAYERS + "\n");
-        //throw("Erro");
+        addError("Object["+object.name+"] Max layers is: " + config::layers::MAX_LAYERS + "\n");               
     }
 
     void showObjectsInfo()
@@ -51,23 +50,26 @@ final class ObjectManager
 
     void draw()
     {
-       for(uint i = 0; i < g_objects.length(); i++)
+       for (uint i = 0; i < g_objects.length(); i++)
 		{
-			for(uint j = 0; j < g_objects[i].length(); j++)
+			for (uint j = 0; j < g_objects[i].length(); j++)
 			{
-				g_objects[i][j].logic();
-				
-				if(g_objects[i][j].visible)
-				{									
-					drawAnimate(
-                        g_objects[i][j].name, 
-                        g_objects[i][j].frames[0], 
-					    g_objects[i][j].frames[1], 
-                        g_objects[i][j].pos.x, 
-					    g_objects[i][j].pos.y, 
-                        g_objects[i][j].delay
-                    );					
-				}
+                if (!g_objects[i][j].dead)
+                {
+				    g_objects[i][j].logic();
+               				
+                    if (g_objects[i][j].visible && !g_objects[i][j].fixed)
+                    {									
+                        drawAnimate(
+                            g_objects[i][j].name, 
+                            g_objects[i][j].frames[0], 
+                            g_objects[i][j].frames[1], 
+                            g_objects[i][j].pos.x, 
+                            g_objects[i][j].pos.y, 
+                            g_objects[i][j].delay
+                        );					
+                    }
+                }
 			}
 		}
     }
