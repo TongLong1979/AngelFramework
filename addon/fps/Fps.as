@@ -9,6 +9,6 @@ final class Fps : FixedLayer
 
     void logic()
     {
-        game.Hint(pos.x, pos.y, "FPS: ", game.fps(), 0, 0xffffff);       
+        game.Hint(pos.x, pos.y, "FPS: ", game.fps(), -1, 0xffffff);       
     }
 };
